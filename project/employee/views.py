@@ -14,35 +14,27 @@ def read_csv_to_list(filename,encoding='latin-1'):
         csv_reader=csv.reader(file)
         for row in csv_reader:
             if(flag==0):
-                #print(row)
                 column_list=[i.lower() for i in row]
-                print(len(column_list))
-                print(column_list)
             else:
                 column_dictionary=dict()
-                # print(len(fields))
-                # print(fields)
-                # print(fields[8])
-#                print(fields[9])
                 for i in range(len(row)):
                     column_dictionary[column_list[i]]=row[i]
+                    key=column_list[i]
+                    if (key=='decision_date' or key=='case_submitted' or key=='employment_start_date' or key=='employment_end_date' or key=='original_cert_date'):
+                        try:
+                            input_date=datetime.strptime(column_dictionary[key], "%d/%m/%y")
+                            output_date_string=input_date.strftime("%Y-%m-%d")
+                            column_dictionary[key]=output_date_string
+                        except:
+                            continue  
+                    if(key=='prevailing_wage' or key=='wage_rate_of_pay_from' or key=='wage_rate_of_pay_to'):
+                        try:
+                            column_dictionary[key]=float(column_dictionary[key].replace(',',''))
+                        except:
+                            continue                                              
                 data_dictionary[row_number]=column_dictionary
                 row_number=row_number+1
             flag=1
-    for keys in data_dictionary:
-        print(keys)
-        for key in data_dictionary[keys]:
-            if (key=='decision_date' or key=='case_submitted' or key=='employment_start_date' or key=='employment_end_date' or key=='original_cert_date'):
-                try:
-                    input_date=datetime.strptime(data_dictionary[keys][key], "%d/%m/%y")
-                    print('reached the above keys')
-                    output_date_string=input_date.strftime("%Y-%m-%d")
-                    data_dictionary[keys][key]=output_date_string
-                except:
-                    continue
-        # if(keys=='full_time_pos')
-        
-
     return data_dictionary
 
 # Replace 'your_file.csv' with the actual path to your CSV file
