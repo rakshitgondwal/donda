@@ -1,8 +1,15 @@
 from django.shortcuts import render
 from .models import Employee
-
+from django.http import HttpResponse
 import csv
 from datetime import datetime
+
+csv_filename = 'D:/Hackathons/donda/project/employee/2016_2.csv'
+
+
+def upload_data(self):
+    read_csv_to_list(csv_filename) 
+    return HttpResponse("Uploaded")
 
 csv_filename = 'D:/Hackathons/donda/project/employee/2016_2.csv'
 
