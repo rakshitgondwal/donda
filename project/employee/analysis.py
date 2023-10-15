@@ -27,8 +27,10 @@ def find_mean(self):
     # The result is a dictionary with the average value
     average_salary_value = average_salary['prevailing_wage__avg']
 
-    print(average_salary_value)
-    return HttpResponse("<html><body>Hi</body></html>")
+    data = {
+        'average_salary_value': average_salary_value
+    }
+    return JsonResponse(data)
 
 
 ############ Median ###########
@@ -46,14 +48,16 @@ def median(self):
 
     median_salary = result[0] if result else None
 
-    print(median_salary)
-    return HttpResponse("<html><body>Hi</body></html>")
+    data = {
+        'median_salary': median_salary
+    }
+    return JsonResponse(data)
 
 
 ########### 25 percentile ################
 def percentile_25(self):
     # Your raw SQL query to calculate the 25th percentile
-    query = """
+    query = f"""
         SELECT percentile_cont(0.25) WITHIN GROUP (ORDER BY prevailing_wage) AS percentile_25
         FROM employee_Employee;
     """
@@ -65,8 +69,10 @@ def percentile_25(self):
 
     percentile_25_salary = result[0] if result else None
 
-    print(percentile_25_salary)
-    return HttpResponse("<html><body>Hi</body></html>")
+    data = {
+        'percentile_25_salary': percentile_25_salary
+    }
+    return JsonResponse(data)
 
 
 ######## 75 percentile #########
@@ -84,5 +90,7 @@ def percentile_75(self):
 
     percentile_75_salary = result[0] if result else None
 
-    print(percentile_75_salary)
-    return HttpResponse("<html><body>Hi</body></html>")
+    data = {
+        'percentile_75_salary': percentile_75_salary
+    }
+    return JsonResponse(data)

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Analyzer</title>
+  </head>
+  <style>
+    html{
+      height: 100vh;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    }
+    .main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .header{
+        margin-bottom: 60px;
+        justify-self: flex-start;
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .btn{
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #007BFF;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .btn:hover ,.btn:active{
+        background-color: #0056b3;
+    }
+
+    .result-box{
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+  </style>
+  <body>
+    <div class="main">
+      <div class="header">
+        <h1>Data Analyzer</h1>
+      </div>
+      <div style="display: flex; align-items: center;justify-content: center;">
+        <form action="/employee/total/" method="get">
+          <input class='btn' type="submit" value="total">
+        </form>  
+        <form action="/employee/mean/" method="get">
+          <input class='btn' type="submit" value="mean">
+        </form>
+        <form action="/employee/median/" method="get">
+          <input class='btn' type="submit" value="median">
+        </form>
+        <form action="/employee/p25/" method="get">
+          <input class='btn' type="submit" value="p25">
+        </form>
+        <form action="/employee/p75/" method="get">
+          <input class='btn' type="submit" value="p75">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
