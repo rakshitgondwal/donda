@@ -25,7 +25,7 @@ class Employee(models.Model):
     soc_name = models.CharField("soc_name", max_length=255)
     naic_code = models.CharField("naic_code", max_length=10)
     total_workers = models.IntegerField("total_workers")
-    full_time_position = models.BooleanField("full_time_position")
+    full_time_position = models.CharField("full_time_position")
     prevailing_wage = models.DecimalField("prevailing_wage", max_digits=12, decimal_places=2)
     pw_unit_of_pay = models.CharField("pw_unit_of_pay", max_length=10)
     pw_wage_source = models.CharField("pw_wage_source", max_length=255)
