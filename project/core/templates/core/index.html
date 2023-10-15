@@ -11,7 +11,9 @@
       <div class="header">
         <h1>Data Analyzer</h1>
       </div>
-      <form action="" method="post">
+      <!-- <form action=" {% url '' %} " method="post"> -->
+      <form action="{{ url_for('') }}" method="post">
+      {% csrf_token %}  
         <input class='btn' type="submit" value="total">
         <input class='btn' type="submit" value="mean">
         <input class='btn' type="submit" value="median">
@@ -19,7 +21,7 @@
         <input class='btn' type="submit" value="p75">
       </form>
 
-      <div class="result-box">result</div>
+      <div class="result-box">{{ result }}</div>
     </div>
   </body>
 </html>
