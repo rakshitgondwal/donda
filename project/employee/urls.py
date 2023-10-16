@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import path
 
 from . import views, analysis
 
@@ -10,5 +10,4 @@ urlpatterns = [
     path("median/", analysis.median, name="upload_data"),
     path("p25/", analysis.percentile_25, name="upload_data"),
     path("p75/", analysis.percentile_75, name="upload_data"),
-    path("__debug__/", include("debug_toolbar.urls")),
 ]

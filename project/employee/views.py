@@ -11,7 +11,7 @@ def upload_data(self):
     read_csv_to_list(csv_filename) 
     return HttpResponse("Uploaded")
 
-def clear_cache(self,insertion_list,counter):
+def clear_cache(insertion_list,counter):
     Employee.objects.bulk_create(insertion_list)
     counter=0
     insertion_list.clear()
